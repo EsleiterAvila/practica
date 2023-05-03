@@ -1,0 +1,15 @@
+package DefaultMarsPhotosRepository
+
+import com.example.marsphotos.network.MarsApi
+
+interface MarsPhotosRepository {
+
+    suspend fun getMarsPhotos(): List<MarsPhoto> {
+        class DefaultMarsPhotosRepository : MarsPhotosRepository {
+            override suspend fun getMarsPhotos(): List<MarsPhoto> {
+                return MarsApi.retrofitService.getPhotos()
+            }
+        }
+    }
+}
+
